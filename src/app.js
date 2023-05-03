@@ -1,15 +1,36 @@
 import cors from "cors";
 import express,{ json, request, response } from "express";
+import db from "./config/db.js";
 
-// express server or node app
+
+
 const app = express();
 
-// which returns json , easy to consume
+
 app.use(express.json());
 
+app.get('/masini', async (req,res)=>{
+// alte metode pe sequelize 
+// de populat baza de date 
+//https://sequelize.org/api/v6/identifiers
+// create a react-app
 
-// middle-ware
-// cors allows to send requests from other origins to the back-end
-// npm install cors 
-// all CORS (routes) enabled
-app.use(cors());
+
+
+    let  masini= await db.models.masina.findAll();
+
+
+
+    res.status(200).json(masini);   
+})
+
+
+
+db.sequelize.sync().then((result) => {
+    
+
+    app.listen(3456,()=>{
+        console.log("endpoint");
+    })
+    
+});
