@@ -12,23 +12,23 @@ const connectDb = () => {
             "root",
             "Borisescul23",
             {
-                host:"localhost",
-                dialect:"mysql"
+                host: "localhost",
+                dialect: "mysql"
             }
-            
+
         )
 
         let db = {
-            
-        models:{}
+
+            models: {}
         }
 
-// clasa seueqlizw
-        db.Sequelize=Sequelize;
-// obiectul 
-        db.sequelize=sequelize;
-//
-        db.models.masina=masina(sequelize);
+        // clasa seueqlizw
+        db.Sequelize = Sequelize;
+        // obiectul sequelize
+        db.sequelize = sequelize;
+        //
+        db.models.masina = masina(sequelize);
 
 
         return db;
@@ -40,5 +40,5 @@ const connectDb = () => {
 }
 
 
-let db=connectDb();
+let db = connectDb();
 export default db;
